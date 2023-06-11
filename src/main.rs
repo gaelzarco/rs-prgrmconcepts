@@ -1,39 +1,66 @@
-// VARIBALES AND MUTABILITY
-
+// DATATYPES
+// rust is a statically typed language
 fn main() {
-    // LET & LET MUT
-    // vars are immutable by default
-    // let x: i32 = 5;
-    // println!("The value of x is: {x}");
-   //  x = 6; error: cannot assign twice to immutable variable `x`
+    // SCALAR TYPES: represent a single calue (integers, floating-point numbers, Booleans, and characters)
+    let unsigned: i32 = -10; // signed integer
+    let signed: u32 = 10; // unsigned integer
+    let wrap: &u32 = &signed.wrapping_add(1); // wrapping_add() is a method that checks for overflow
+    println!("{}", wrap);
 
-    // let mut y: i32 = 10;
-    // println!("The value of y is: {y}");
-    // y = 11;
-    // println!("The value of y is: {}", y);
+    // example of a compound type
+    let wrap: &(u32, bool) = &signed.overflowing_add(1); // overflowing_add() is a method that checks for overflow and returns a tuple (result, bool)
+    // can also use checked_add() which returns an Option<T> that is None if overflow occurs
 
-    // CONSTANTS
-    // cannot use mut with constants, must annotate type, name is uppercase, use underscores
-    // const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
-    // println!("Three hours in seconds is: {}", THREE_HOURS_IN_SECONDS);
+    println!("{:#?}", wrap);
 
-    // SHADOWING
-    // Shadowing is different from using mut because it creates a new var rather than mutating the original var
-    // it also enables us to change the vars type which is not possible with mut
+    println!("signed: {}, unsigned: {}", signed, unsigned);
 
-    // we first bind b to a value of 5, then we can rebind it to a value of 5 + 1 after the first println!
-    let b = 5;
-    println!("The value of first-b is: {}", b);
+    let decimal: f32 = 10.0; // floating point
+    let visualseperator: u32 = 1_000_000; // visual seperator
 
-    // new var b shadows previous b var
-    let b = b + 1;
+    println!("decimal: {decimal}, visualseperator: {visualseperator}");
 
-    {
-        // new var b shadows previous b var but only until this inner scope ends
-        let b = 5 * 2;
-        println!("The value of b in the inner scope is: {}", b);
-    }
+    let f: bool = false; // explicit bool
+    let t: bool = true; // explicit bool
 
-    // b returns to the value of the shadowed in this outer scope b
-    println!("The value of shadowed-b is: {}", b);
+    println!("f: {f}, t: {t}");
+    
+    // chars
+    // represents single Unicode scalar values
+    // can represent more than ASCII (e.g. emoji)
+
+    let char: char = '🪴'; // specify chars using single quotes as opposed to string literals
+    println!("char: {}", char);
+
+    // COMPOUND TYPES
+
+    // Tuple type
+    // Fixed length
+    let balls: (char, char) = ('🪀', '🪀');
+    println!("balls: {:#?}", balls);
+
+    let tup: (i32, u32, f32) = (-500, 500, 5.0);
+    println!("tup: {:?}", tup);
+
+    let (x, y, z) = tup; // Destructuring a typle into individual variables
+    println!("x: {}, y: {}, z: {}", &x, &y, &z);
+
+    let five_point_o = tup.2; // Accessing a tuple element directly
+    println!("five_point_o: {}", &five_point_o);
+
+    let unit: () = (); // UNIT TYPE
+    println!("unit: {:#?}", &unit);
+    // An empty tuple used when no value is needed
+    // This is the default return type of expressions that don't return anything
+
+    // ARRAY TYPE
+    // Every element of an array must have the same type
+    // Arrays are fixed lengths
+    // Allocated on the stack
+    let a: [u32; 5] = [1, 2, 3, 4, 5];
+    let b = [1; 10]; 
+
+    println!("a: {:#?}", &a);
+    println!("b: {:?}", &b);
+
 }
