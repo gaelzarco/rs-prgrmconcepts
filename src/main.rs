@@ -1,66 +1,30 @@
-// DATATYPES
-// rust is a statically typed language
 fn main() {
-    // SCALAR TYPES: represent a single calue (integers, floating-point numbers, Booleans, and characters)
-    let unsigned: i32 = -10; // signed integer
-    let signed: u32 = 10; // unsigned integer
-    let wrap: &u32 = &signed.wrapping_add(1); // wrapping_add() is a method that checks for overflow
-    println!("{}", wrap);
-
-    // example of a compound type
-    let wrap: &(u32, bool) = &signed.overflowing_add(1); // overflowing_add() is a method that checks for overflow and returns a tuple (result, bool)
-    // can also use checked_add() which returns an Option<T> that is None if overflow occurs
-
-    println!("{:#?}", wrap);
-
-    println!("signed: {}, unsigned: {}", signed, unsigned);
-
-    let decimal: f32 = 10.0; // floating point
-    let visualseperator: u32 = 1_000_000; // visual seperator
-
-    println!("decimal: {decimal}, visualseperator: {visualseperator}");
-
-    let f: bool = false; // explicit bool
-    let t: bool = true; // explicit bool
-
-    println!("f: {f}, t: {t}");
-    
-    // chars
-    // represents single Unicode scalar values
-    // can represent more than ASCII (e.g. emoji)
-
-    let char: char = '🪴'; // specify chars using single quotes as opposed to string literals
-    println!("char: {}", char);
-
-    // COMPOUND TYPES
-
-    // Tuple type
-    // Fixed length
-    let balls: (char, char) = ('🪀', '🪀');
-    println!("balls: {:#?}", balls);
-
-    let tup: (i32, u32, f32) = (-500, 500, 5.0);
-    println!("tup: {:?}", tup);
-
-    let (x, y, z) = tup; // Destructuring a typle into individual variables
-    println!("x: {}, y: {}, z: {}", &x, &y, &z);
-
-    let five_point_o = tup.2; // Accessing a tuple element directly
-    println!("five_point_o: {}", &five_point_o);
-
-    let unit: () = (); // UNIT TYPE
-    println!("unit: {:#?}", &unit);
-    // An empty tuple used when no value is needed
-    // This is the default return type of expressions that don't return anything
-
-    // ARRAY TYPE
-    // Every element of an array must have the same type
-    // Arrays are fixed lengths
-    // Allocated on the stack
-    let a: [u32; 5] = [1, 2, 3, 4, 5];
-    let b = [1; 10]; 
-
-    println!("a: {:#?}", &a);
-    println!("b: {:?}", &b);
-
+    another_function(12)
 }
+
+fn another_function(x: i32) {
+    // statement (does not return a value)
+    let int: i32 = x;
+
+    // let y = 6 does not return a value so there isnt anything for x to bind to
+    // this results in an error
+    // let x = (let y = 6);
+
+    // Calling a function/macro is an expression. 
+    // A new scope block created with curly brackets is an expression.
+
+    let y: i32 = {
+        let b: i32 = 3;
+        // no semicolon at the end of the expression
+        // if you add a semicolon to the end of an expression, it becomes a statement
+        // and will not return a value
+        b + 1
+    };
+    // The piece of code above is an expression that evaluates to 4
+
+    println!("the number is {int}");
+    print!("the value of y is {y}");
+}
+
+// statements are instruction that perform an action and do not return a value
+// expressions evaluate to a resultant value
