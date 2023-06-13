@@ -16,6 +16,9 @@ fn five() -> i32 {
     5
 }
 
+// If you add a semicolon to this expression, it becomes a statement and\
+// return the unit type () which is not what we want
+// nothing is technically returned if the semicolon is added
 fn plus_one(x: i32) -> i32 {
     x + 1
 }
