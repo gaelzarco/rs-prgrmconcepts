@@ -1,5 +1,23 @@
 fn main() {
+    let h: i32 = five();
+    let v: i32 = plus_one(h);
+
+    println!("the value of h is {h}");
+    println!("h + 1 = {v}");
     another_function(12)
+}
+
+// Functions can return values to the code that calls them.
+// We dont name return values, but we do declare their type after an arrow (->)
+// you can return early using the return keyword and specifying a value
+// most functions return the last expression implicitly
+fn five() -> i32 {
+    // the number 5 with no semicolon is an expression in this case
+    5
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1
 }
 
 fn another_function(x: i32) {
@@ -23,7 +41,7 @@ fn another_function(x: i32) {
     // The piece of code above is an expression that evaluates to 4
 
     println!("the number is {int}");
-    print!("the value of y is {y}");
+    println!("the value of y is {y}");
 }
 
 // statements are instruction that perform an action and do not return a value
