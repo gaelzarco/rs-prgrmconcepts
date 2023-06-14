@@ -4,6 +4,8 @@ fn main() {
     // let mut count = 3;
 
     // for fun
+    // here we are iterating over a reversed range of numbers from 1 to 4
+    // the range is inclusive of the first number and exclusive of the last number
     for number in (1..4).rev() {
         println!("{number}");
     }
